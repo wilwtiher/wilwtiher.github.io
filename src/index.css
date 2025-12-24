@@ -5,47 +5,49 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
-    --background: 220 20% 6%;
-    --foreground: 180 100% 95%;
+:root {
+    --background: 260 30% 6%;
+    --foreground: 260 50% 95%;
 
-    --card: 220 20% 10%;
-    --card-foreground: 180 100% 95%;
+    --card: 260 30% 10%;
+    --card-foreground: 260 50% 95%;
 
-    --popover: 220 20% 8%;
-    --popover-foreground: 180 100% 95%;
+    --popover: 260 30% 8%;
+    --popover-foreground: 260 50% 95%;
 
-    --primary: 180 100% 50%;
-    --primary-foreground: 220 20% 6%;
+    --primary: 270 80% 60%;
+    --primary-foreground: 260 30% 6%;
 
-    --secondary: 280 80% 60%;
-    --secondary-foreground: 180 100% 95%;
+    --secondary: 200 100% 50%;
+    --secondary-foreground: 260 30% 6%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 220 10% 60%;
+    --muted: 260 20% 15%;
+    --muted-foreground: 260 15% 55%;
 
-    --accent: 320 80% 55%;
-    --accent-foreground: 180 100% 95%;
+    --accent: 290 70% 50%;
+    --accent-foreground: 260 50% 95%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 180 50% 20%;
-    --input: 220 20% 15%;
-    --ring: 180 100% 50%;
+    --border: 270 40% 25%;
+    --input: 260 30% 15%;
+    --ring: 270 80% 60%;
 
     --radius: 0.75rem;
 
-    /* Custom gaming colors */
-    --neon-cyan: 180 100% 50%;
-    --neon-purple: 280 80% 60%;
-    --neon-pink: 320 80% 55%;
+    /* Custom galaxy colors */
+    --neon-purple: 270 80% 60%;
+    --neon-cyan: 200 100% 50%;
+    --neon-pink: 300 70% 55%;
     --neon-blue: 220 100% 60%;
+    --star-white: 0 0% 100%;
     
     /* Gradients */
     --gradient-neon: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--secondary)) 50%, hsl(var(--accent)) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(220 20% 12%) 0%, hsl(220 20% 8%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(260 30% 12%) 0%, hsl(260 30% 8%) 100%);
     --gradient-glow: radial-gradient(ellipse at center, hsl(var(--primary) / 0.3) 0%, transparent 70%);
+    --gradient-galaxy: radial-gradient(ellipse at center, hsl(270 60% 15%) 0%, hsl(260 30% 6%) 100%);
     
     /* Shadows */
     --shadow-neon: 0 0 20px hsl(var(--primary) / 0.5), 0 0 40px hsl(var(--primary) / 0.3);
@@ -55,14 +57,14 @@
     --font-display: 'Orbitron', sans-serif;
     --font-body: 'Rajdhani', sans-serif;
 
-    --sidebar-background: 220 20% 8%;
-    --sidebar-foreground: 180 100% 95%;
-    --sidebar-primary: 180 100% 50%;
-    --sidebar-primary-foreground: 220 20% 6%;
-    --sidebar-accent: 220 20% 15%;
-    --sidebar-accent-foreground: 180 100% 95%;
-    --sidebar-border: 180 50% 20%;
-    --sidebar-ring: 180 100% 50%;
+    --sidebar-background: 260 30% 8%;
+    --sidebar-foreground: 260 50% 95%;
+    --sidebar-primary: 270 80% 60%;
+    --sidebar-primary-foreground: 260 30% 6%;
+    --sidebar-accent: 260 30% 15%;
+    --sidebar-accent-foreground: 260 50% 95%;
+    --sidebar-border: 270 40% 25%;
+    --sidebar-ring: 270 80% 60%;
   }
 }
 

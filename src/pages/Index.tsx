@@ -4,7 +4,7 @@ import SocialLinks from '@/components/SocialLinks';
 import AboutMe from '@/components/AboutMe';
 import ChatBox from '@/components/ChatBox';
 import MusicPlayer from '@/components/MusicPlayer';
-import avatarImage from '@/assets/avatar.png';
+import avatarImage from '@/assets/avatar.gif';
 
 const Index = () => {
   return (

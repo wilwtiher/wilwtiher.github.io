@@ -4,8 +4,8 @@ import { User, Gamepad2, Code, Music } from 'lucide-react';
 const AboutMe = () => {
   const traits = [
     { icon: <Gamepad2 className="w-5 h-5" />, text: 'Gamer' },
-    { icon: <Code className="w-5 h-5" />, text: 'Tech Enthusiast' },
-    { icon: <Music className="w-5 h-5" />, text: 'Music Lover' },
+    { icon: <Code className="w-5 h-5" />, text: 'Programador' },
+    { icon: <Music className="w-5 h-5" />, text: 'Trap Lover' },
   ];
 
   return (
@@ -23,11 +23,10 @@ const AboutMe = () => {
       </div>
       
       <p className="text-muted-foreground leading-relaxed mb-4 font-body text-lg">
-        E aí! Sou o <span className="text-primary font-semibold">Wilwither</span>, 
-        mas pode me chamar de <span className="text-secondary font-semibold">Will</span>. 
-        Sou apaixonado por games, tecnologia e música. Adoro passar o tempo jogando 
-        com amigos e explorando novos mundos virtuais. Se quiser trocar uma ideia 
-        ou jogar junto, é só me chamar!
+        É... só tentando ser eu; Eu acho. <span className="text-primary font-semibold">Wilwither</span>, 
+        mais conhecido apenas como <span className="text-secondary font-semibold">Will</span>, 
+        amo programar e conhecer pessoas novas, adoro passar o tempo conversando com amigos e jogando. 
+        Também gosto muito de música, como trap. Qualquer coisa que precisar, pode me chamar!
       </p>
 
       <div className="flex flex-wrap gap-3">
