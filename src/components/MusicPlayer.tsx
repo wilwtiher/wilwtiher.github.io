@@ -1,22 +1,55 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Volume2, VolumeX, Play, Pause, Music } from 'lucide-react';
+import { Volume2, VolumeX, Play, Pause, Music, SkipForward } from 'lucide-react';
+
+// Playlist of songs in public/music folder
+const playlist = [
+  { name: 'Antigamente', path: '/music/Antigamente.mp3' },
+  { name: 'Desculpa Amor', path: '/music/Desculpa_Amor.mp3' },
+];
+
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.3);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [shuffledPlaylist, setShuffledPlaylist] = useState(() => shuffleArray(playlist));
   const audioRef = useRef<HTMLAudioElement>(null);
-
-  // Using a royalty-free lo-fi track
-  const musicUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = volume;
-      audioRef.current.loop = true;
     }
   }, [volume]);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.src = shuffledPlaylist[currentIndex].path;
+      if (isPlaying) {
+        audioRef.current.play();
+      }
+    }
+  }, [currentIndex, shuffledPlaylist]);
+
+  const handleEnded = () => {
+    // Go to next song, shuffle again when reaching end
+    if (currentIndex < shuffledPlaylist.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+    } else {
+      const newShuffled = shuffleArray(playlist);
+      setShuffledPlaylist(newShuffled);
+      setCurrentIndex(0);
+    }
+  };
 
   const togglePlay = () => {
     if (audioRef.current) {
@@ -36,6 +69,18 @@ const MusicPlayer = () => {
     }
   };
 
+  const skipToNext = () => {
+    if (currentIndex < shuffledPlaylist.length - 1) {
+      setCurrentIndex(prev => prev + 1);
+    } else {
+      const newShuffled = shuffleArray(playlist);
+      setShuffledPlaylist(newShuffled);
+      setCurrentIndex(0);
+    }
+  };
+
+  const currentSong = shuffledPlaylist[currentIndex];
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -43,7 +88,11 @@ const MusicPlayer = () => {
       transition={{ delay: 0.8 }}
       className="fixed bottom-6 left-6 z-40"
     >
-      <audio ref={audioRef} src={musicUrl} />
+      <audio 
+        ref={audioRef} 
+        src={currentSong.path}
+        onEnded={handleEnded}
+      />
       
       <div className="glass-card rounded-2xl p-3 neon-border flex items-center gap-3">
         <motion.button
@@ -55,12 +104,21 @@ const MusicPlayer = () => {
           {isPlaying ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
         </motion.button>
 
-        <div className="flex items-center gap-2">
-          <Music className="w-4 h-4 text-primary animate-pulse" />
-          <span className="text-xs text-muted-foreground font-body">
-            {isPlaying ? 'Playing...' : 'Paused'}
+        <div className="flex items-center gap-2 min-w-0">
+          <Music className="w-4 h-4 text-primary flex-shrink-0 animate-pulse" />
+          <span className="text-xs text-muted-foreground font-body truncate max-w-[100px]">
+            {isPlaying ? currentSong.name : 'Pausado'}
           </span>
         </div>
+
+        <motion.button
+          onClick={skipToNext}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+          className="p-2 rounded-full bg-muted/50 text-muted-foreground hover:text-primary transition-colors"
+        >
+          <SkipForward className="w-4 h-4" />
+        </motion.button>
 
         <motion.button
           onClick={toggleMute}
