@@ -6,6 +6,13 @@ import { Volume2, VolumeX, Play, Pause, Music, SkipForward } from 'lucide-react'
 const playlist = [
   { name: 'Antigamente', path: '/music/Antigamente.mp3' },
   { name: 'Desculpa Amor', path: '/music/Desculpa_Amor.mp3' },
+  { name: 'Fibonacci', path: '/music/Fibonacci.mp3' },
+  { name: 'Filosofia de busão', path: '/music/Filosofia_de_busao.mp3' },
+  { name: 'Maria Madalena', path: '/music/Maria_Madalena.mp3' },
+  { name: 'POTARA', path: '/music/POTARA.mp3' },
+  { name: 'Rivais', path: '/music/Rivais.mp3' },
+  { name: 'Túmulos', path: '/music/Tumulos.mp3' },
+  { name: 'Vendetta', path: '/music/Vendetta.mp3' },
 ];
 
 const shuffleArray = <T,>(array: T[]): T[] => {
